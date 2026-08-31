@@ -1,0 +1,52 @@
+name: Omawe Web CD (prod)
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+concurrency:
+  group: cd-prod
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy prod to VPS
+    runs-on: ubuntu-latest
+    steps:
+      - name: SSH deploy
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.DEPLOY_SSH_HOST }}
+          username: ${{ secrets.DEPLOY_SSH_USER }}
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          port: ${{ secrets.DEPLOY_SSH_PORT }}
+          script_stop: true
+          script: |
+            set -euo pipefail
+
+            REPO_DIR="/home/ubuntu/omawe-website"
+            cd "$REPO_DIR"
+
+            echo "==> Fetching latest main"
+            git fetch origin main
+            git reset --hard origin/main
+
+            echo "==> Rebuilding and restarting web container"
+            docker compose build web
+            docker compose up -d web
+
+            echo "==> Pruning dangling images"
+            docker image prune -f
+
+            echo "==> Waiting for health check (localhost:3000)"
+            for i in $(seq 1 10); do
+              if curl -fsS http://localhost:3000/ > /dev/null; then
+                echo "Healthy."
+                exit 0
+              fi
+              sleep 3
+            done
+
+            echo "Health check failed after deploy — check 'docker compose logs web' on the VPS."
+            exit 1

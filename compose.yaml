@@ -1,32 +1,17 @@
-# Deploy target: run this on the VPS.
-#   docker compose up -d
-# The image is built and pushed to GHCR by .github/workflows/deploy.yml on
-# every push to main. Watchtower polls GHCR and restarts the app on new images.
+# Deploy target: lives on the VPS as a git checkout of this repo.
+# The cd-prod.yml workflow SSHes in, pulls main, then runs:
+#   docker compose build web && docker compose up -d web
 #
-# One-time VPS setup for private GHCR pulls:
-#   echo "$GHCR_PAT" | docker login ghcr.io -u <github-username> --password-stdin
-#   (PAT needs read:packages)
-
 services:
   web:
-    image: ghcr.io/ex-boyfriends/omawe-website:latest
+    build: .
     restart: unless-stopped
     ports:
-      - "127.0.0.1:3000:3000" # bind to loopback; existing reverse proxy fronts it
+      - "127.0.0.1:3000:3000" # loopback only; existing reverse proxy fronts it
     environment:
       - NODE_ENV=production
-    labels:
-      - "com.centurylinklabs.watchtower.enable=true"
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://localhost:3000/"]
       interval: 30s
       timeout: 5s
       retries: 3
-
-  watchtower:
-    image: containrrr/watchtower
-    restart: unless-stopped
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - ~/.docker/config.json:/config.json:ro
-    command: --label-enable --cleanup --interval 60
