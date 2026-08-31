@@ -1,26 +1,242 @@
 @import "tailwindcss";
 
+/* ------------------------------------------------------------------ *
+ * Design tokens
+ * ------------------------------------------------------------------ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* --- Roadbook world ---------------------------------------------- *
+   * The site is a rally roadbook printed on cool technical paper. The
+   * device surfaces inset into it (Live Activity, Dynamic Island) stay
+   * black, because a Lock Screen is black — the page is the paper, the
+   * dark objects are the phone.
+   */
+  --rb-ground: #eef2f4;
+  --rb-stock: #ffffff;
+  --rb-stock-hi: #f6f9fa;
+  --rb-ink: #0c1417;
+  --rb-ink-dim: #55666e;
+  --rb-rule: rgb(12 20 23 / 0.13);
+  --rb-rule-strong: rgb(12 20 23 / 0.28);
+  /* Brand cyan is a light hue: #03B9D6 only reaches 2.1:1 on paper, so brand
+   * marks drawn ON the page use this deeper teal (3.9:1, clears the 3:1 floor
+   * for non-text graphics). The bright cyan stays for the dark device surfaces. */
+  --rb-brand-ink: #0284a0;
+  /* The route spine. Structural, so it reads as a line, not a hairline hint. */
+  --rb-spine: rgb(2 132 160 / 0.7);
+  /* Amber carries the stale state. The page needs a darker amber to clear
+   * 4.5:1 on paper; the dark device surfaces keep the bright iOS orange. */
+  --rb-caution: #a1560b;
+  --rb-caution-bright: #ff9f0a;
+  --rb-plate: #dae9ff;
+
+  /* Inside the dark device surfaces, regardless of the page ground. */
+  --rb-device: #0a0c0d;
+  --rb-device-hi: #161c1f;
+  --rb-device-ink: #e8f0f4;
+  /* The page's dim ink is a dark grey; on a black device surface it only
+   * reaches 3.3:1, so device-side secondary text gets its own value. */
+  --rb-device-ink-dim: #93a7b1;
+
+  --background: var(--rb-ground);
+  --foreground: var(--rb-ink);
+
+  /* Faint street grid lifted from the app icon's ground. */
+  --rb-map-grid:
+    repeating-linear-gradient(
+      90deg,
+      rgb(2 132 160 / 0.07) 0 1px,
+      transparent 1px 96px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgb(2 132 160 / 0.07) 0 1px,
+      transparent 1px 96px
+    );
+
+  /* --- Gradient tokens -------------------------------------------- *
+   * Type: linear, direction top -> bottom (180deg).
+   * *-pattern variants are the 3-stop loop used behind the plus pattern.
+   */
+
+  /* Normal space */
+  --gradient-brand-base: linear-gradient(180deg, #03b9d6 0%, #7ae8ff 100%);
+  --gradient-brand-base-pattern: linear-gradient(
+    180deg,
+    #03b9d6 0%,
+    #7ae8ff 50%,
+    #03b9d6 100%
+  );
+
+  --gradient-in-trip: linear-gradient(180deg, #34da71 0%, #77ffa9 100%);
+  --gradient-in-trip-pattern: linear-gradient(
+    180deg,
+    #34da71 0%,
+    #77ffa9 50%,
+    #34da71 100%
+  );
+
+  --gradient-has-trip: linear-gradient(180deg, #01c9b4 0%, #49ffec 100%);
+  --gradient-has-trip-pattern: linear-gradient(
+    180deg,
+    #01c9b4 0%,
+    #49ffec 50%,
+    #01c9b4 100%
+  );
+
+  /* Dynamic island space */
+  --gradient-dynamic-brand-base: linear-gradient(180deg, #000000 0%, #006b7c 100%);
+  --gradient-dynamic-in-trip: linear-gradient(180deg, #000000 0%, #1e3928 100%);
+  --gradient-dynamic-has-trip: linear-gradient(180deg, #000000 0%, #08564d 100%);
+
+  /* Neutral */
+  --gradient-dark: linear-gradient(180deg, #1c1c1c 0%, #3f3f3f 50%, #1c1c1c 100%);
+  --gradient-light: linear-gradient(180deg, #ffffff 0%, #dae9ff 100%);
+
+  /* --- Plus pattern overlay ------------------------------------- *
+   * Scale 60%, spacing x & y 20%. Layer over any gradient:
+   *   background-image: var(--pattern-plus), var(--gradient-brand-base-pattern);
+   */
+  --pattern-plus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath d='M12 7v10M7 12h10' stroke='rgba(255,255,255,0.18)' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E");
+  --pattern-plus-size: 24px 24px;
 }
+
+/* Single committed look — the printed roadbook — so no prefers-color-scheme
+ * flip. The dark surfaces on the page are devices, not a dark theme. */
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  --color-ground: var(--rb-ground);
+  --color-stock: var(--rb-stock);
+  --color-stock-hi: var(--rb-stock-hi);
+  --color-ink: var(--rb-ink);
+  --color-ink-dim: var(--rb-ink-dim);
+  --color-rule: var(--rb-rule);
+  --color-rule-strong: var(--rb-rule-strong);
+  --color-spine: var(--rb-spine);
+  --color-caution: var(--rb-caution);
+  --color-caution-bright: var(--rb-caution-bright);
+  --color-plate: var(--rb-plate);
+  --color-device: var(--rb-device);
+  --color-device-ink: var(--rb-device-ink);
+  --color-device-ink-dim: var(--rb-device-ink-dim);
+  --color-brand: #03b9d6;
+  --color-brand-soft: #7ae8ff;
+  --color-brand-ink: var(--rb-brand-ink);
+  --color-in-trip: #34da71;
+  --color-has-trip: #01c9b4;
+
+  /* Font families — SF Pro (system on Apple platforms, graceful fallback) */
+  --font-sans: "SF Pro Text", "SF Pro Display", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: "SF Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ------------------------------------------------------------------ *
+ * Gradient utilities — bg-gradient-<token>
+ * ------------------------------------------------------------------ */
+@utility bg-gradient-brand-base { background-image: var(--gradient-brand-base); }
+@utility bg-gradient-in-trip { background-image: var(--gradient-in-trip); }
+@utility bg-gradient-has-trip { background-image: var(--gradient-has-trip); }
+@utility bg-gradient-dynamic-brand-base { background-image: var(--gradient-dynamic-brand-base); }
+@utility bg-gradient-dynamic-in-trip { background-image: var(--gradient-dynamic-in-trip); }
+@utility bg-gradient-dynamic-has-trip { background-image: var(--gradient-dynamic-has-trip); }
+@utility bg-gradient-dark { background-image: var(--gradient-dark); }
+@utility bg-gradient-light { background-image: var(--gradient-light); }
+
+/* Plus-pattern variants (pattern overlay + 3-stop loop gradient) */
+@utility bg-gradient-brand-base-pattern {
+  background-image: var(--pattern-plus), var(--gradient-brand-base-pattern);
+  background-size: var(--pattern-plus-size), cover;
+}
+@utility bg-gradient-in-trip-pattern {
+  background-image: var(--pattern-plus), var(--gradient-in-trip-pattern);
+  background-size: var(--pattern-plus-size), cover;
+}
+@utility bg-gradient-has-trip-pattern {
+  background-image: var(--pattern-plus), var(--gradient-has-trip-pattern);
+  background-size: var(--pattern-plus-size), cover;
+}
+@utility bg-gradient-dynamic-brand-base-pattern {
+  background-image: var(--pattern-plus), var(--gradient-dynamic-brand-base);
+  background-size: var(--pattern-plus-size), cover;
+}
+@utility bg-gradient-dynamic-in-trip-pattern {
+  background-image: var(--pattern-plus), var(--gradient-dynamic-in-trip);
+  background-size: var(--pattern-plus-size), cover;
+}
+@utility bg-gradient-dynamic-has-trip-pattern {
+  background-image: var(--pattern-plus), var(--gradient-dynamic-has-trip);
+  background-size: var(--pattern-plus-size), cover;
+}
+
+/* ------------------------------------------------------------------ *
+ * Roadbook utilities
+ * ------------------------------------------------------------------ */
+
+/* The faint street grid behind the whole document. */
+@utility bg-map-grid {
+  background-image: var(--rb-map-grid);
+}
+
+/* The label schema: condensed caps over monospaced digit runs. */
+@utility placard {
+  font-size: 0.6875rem;
+  font-weight: 590;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--rb-ink-dim);
+}
+
+/* Measurements are set as measurements: tabular, never proportional. */
+@utility figures {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+/* ------------------------------------------------------------------ *
+ * Browser surfaces — the parts we did not draw still carry the design
+ * ------------------------------------------------------------------ */
+html {
+  color-scheme: light;
+  scrollbar-color: var(--rb-rule-strong) transparent;
+  scrollbar-width: thin;
+  -webkit-tap-highlight-color: rgb(3 185 214 / 0.24);
+}
+
+::selection {
+  background: rgb(3 185 214 / 0.28);
+  color: var(--rb-ink);
+}
+
+:focus-visible {
+  outline: 2px solid #0284a0;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+a {
+  text-underline-offset: 0.25em;
+  text-decoration-thickness: from-font;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  caret-color: var(--color-brand-soft);
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { SiteFooter, Wordmark } from "@/components/site-chrome";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | Omawe",
@@ -12,11 +13,16 @@ const LAST_UPDATED = "August 31, 2026";
 
 export default function PrivacyPolicyPage() {
   return (
+    <div className="flex-1 bg-map-grid">
     <main className="mx-auto max-w-3xl px-6 py-16">
-      <h1 className="text-3xl font-bold tracking-tight">Privacy Policy</h1>
-      <p className="mt-2 text-sm text-foreground/60">Last updated: {LAST_UPDATED}</p>
+      <Wordmark href="/" />
 
-      <div className="mt-10 space-y-8 leading-relaxed text-foreground/90">
+      <h1 className="mt-10 text-3xl font-bold tracking-[-0.03em] sm:text-4xl">
+        Privacy Policy
+      </h1>
+      <p className="placard mt-3">Last updated: {LAST_UPDATED}</p>
+
+      <div className="mt-10 space-y-8 border-t border-rule pt-10 leading-relaxed text-ink-dim [&_h2]:text-ink [&_strong]:text-ink">
         <section className="space-y-3">
           <p>
             This Privacy Policy explains how Omawe (&quot;Omawe&quot;, &quot;we&quot;,
@@ -27,11 +33,46 @@ export default function PrivacyPolicyPage() {
         </section>
 
         <section className="space-y-3">
-          <h2 className="text-xl font-semibold">Information we collect</h2>
+          <h2 className="text-xl font-semibold">Location data</h2>
+          <p>
+            Omawe is a trip-tracking app, so precise location is the most
+            sensitive information it handles. How it works:
+          </p>
           <ul className="list-disc space-y-2 pl-6">
             <li>
-              <strong>Information you provide.</strong> Account details, contact information,
-              and anything you submit through forms, support requests, or communications.
+              <strong>Only during a trip you joined.</strong> Precise location is
+              collected only while you are an opted-in participant of an active
+              trip, and only after you grant location permission.
+            </li>
+            <li>
+              <strong>Shared only with that trip&rsquo;s participants.</strong>{" "}
+              Your position and estimated arrival are visible to the other people
+              on the same trip, for the purpose of showing the group who is where.
+            </li>
+            <li>
+              <strong>It ends when the trip ends.</strong> Sharing stops
+              automatically when the trip is completed. You can also stop sharing
+              yourself at any point during a trip.
+            </li>
+            <li>
+              <strong>No always-on tracking.</strong> Omawe does not collect your
+              location outside an active trip, and does not build a continuous
+              history of your movements.
+            </li>
+          </ul>
+        </section>
+
+        <section className="space-y-3">
+          <h2 className="text-xl font-semibold">Other information we collect</h2>
+          <ul className="list-disc space-y-2 pl-6">
+            <li>
+              <strong>Account details.</strong> When you sign in with Apple we
+              receive an identifier and the name and email address you choose to
+              share, used to create and maintain your account.
+            </li>
+            <li>
+              <strong>Trip data.</strong> Trips you create or join, their
+              destination, participants, and status.
             </li>
             <li>
               <strong>Usage data.</strong> Pages visited, features used, referring URLs, and
@@ -65,8 +106,12 @@ export default function PrivacyPolicyPage() {
           <p>We do not sell your personal information. We share it only:</p>
           <ul className="list-disc space-y-2 pl-6">
             <li>
-              With service providers who process data on our behalf (hosting, analytics,
-              payment processing) under contractual confidentiality obligations.
+              With other participants of a trip you have joined, as described
+              under Location data above.
+            </li>
+            <li>
+              With service providers who process data on our behalf (hosting and
+              infrastructure) under contractual confidentiality obligations.
             </li>
             <li>When required by law, subpoena, or to protect our rights and users.</li>
             <li>
@@ -133,11 +178,16 @@ export default function PrivacyPolicyPage() {
         </section>
       </div>
 
-      <div className="mt-12 border-t border-foreground/10 pt-6">
-        <Link href="/" className="text-sm underline underline-offset-4">
+      <div className="mt-12 border-t border-rule pt-6">
+        <Link
+          href="/"
+          className="text-sm text-ink-dim underline decoration-rule-strong transition-colors hover:text-ink"
+        >
           &larr; Back to home
         </Link>
       </div>
     </main>
+    <SiteFooter />
+    </div>
   );
 }
