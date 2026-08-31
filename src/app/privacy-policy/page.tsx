@@ -19,7 +19,7 @@ export default function PrivacyPolicyPage() {
       <div className="mt-10 space-y-8 leading-relaxed text-foreground/90">
         <section className="space-y-3">
           <p>
-            This Privacy Policy explains how [COMPANY_LEGAL_NAME] (&quot;Omawe&quot;, &quot;we&quot;,
+            This Privacy Policy explains how Omawe (&quot;Omawe&quot;, &quot;we&quot;,
             &quot;us&quot;) collects, uses, and shares information about you when you visit our
             website or use our services (the &quot;Services&quot;). By using the Services, you
             agree to the practices described here.
@@ -124,12 +124,11 @@ export default function PrivacyPolicyPage() {
           <p>
             Questions about this Privacy Policy? Contact us at{" "}
             <a
-              href="mailto:[COMPANY_CONTACT_EMAIL]"
+              href="mailto:nurkahfirahmada@gmail.com"
               className="underline underline-offset-4"
             >
-              [COMPANY_CONTACT_EMAIL]
+              nurkahfirahmada@gmail.com
             </a>
-            , or by mail at [COMPANY_ADDRESS].
           </p>
         </section>
       </div>
