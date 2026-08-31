@@ -21,7 +21,6 @@ jobs:
           username: ${{ secrets.DEPLOY_SSH_USER }}
           key: ${{ secrets.DEPLOY_SSH_KEY }}
           port: ${{ secrets.DEPLOY_SSH_PORT }}
-          debug: true
           script_stop: true
           script: |
             set -euo pipefail
