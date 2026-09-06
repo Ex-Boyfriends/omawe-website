@@ -240,6 +240,83 @@
   font-stretch: expanded;
 }
 
+.omawe-card-border {
+  isolation: isolate;
+  position: relative;
+}
+
+.omawe-card-border::after {
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  background: linear-gradient(90deg, #000000 0%, #006b7c 100%);
+  border-radius: inherit;
+  content: "";
+  inset: -1.5px;
+  mask-composite: exclude;
+  padding: 1.5px;
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
+}
+
+.team-card {
+  aspect-ratio: 0.76;
+  container-type: inline-size;
+  overflow: hidden;
+  position: relative;
+}
+
+.team-card-art {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.team-card-copy {
+  left: 9%;
+  right: 8%;
+  top: 8%;
+  position: absolute;
+  z-index: 1;
+}
+
+.team-card-name {
+  color: #fff;
+  font-family: "SF Pro Expanded", "SF Pro Display", -apple-system, sans-serif;
+  font-size: clamp(2rem, 18cqi, 3.8rem);
+  font-stretch: expanded;
+  font-weight: 600;
+  letter-spacing: -0.08em;
+  line-height: 0.9;
+}
+
+.team-card-role {
+  color: rgb(218 233 255 / 0.64);
+  font-size: clamp(0.9rem, 8cqi, 1.6rem);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  margin-top: 0.2em;
+}
+
+.team-card-country {
+  align-items: center;
+  background: rgb(255 255 255 / 0.1);
+  border: 1px solid rgb(218 233 255 / 0.42);
+  border-radius: 999px;
+  color: #fff;
+  display: flex;
+  font-size: clamp(0.75rem, 6.5cqi, 1.25rem);
+  font-weight: 600;
+  gap: 0.45em;
+  margin-top: 1.25em;
+  padding: 0.54em 0.85em;
+  backdrop-filter: blur(12px);
+}
+
 html {
   color-scheme: light;
   scrollbar-color: var(--rb-rule-strong) transparent;
@@ -303,6 +380,22 @@ body {
 .trip-route-traveller {
   animation: trip-route-traveller-pop 420ms cubic-bezier(0.22, 1, 0.36, 1)
     both;
+}
+
+/* Scoped backgrounds for the Figma-derived sections. These deliberately do
+   not alter the protected hero's shared utilities or route animation. */
+.omawe-problem-section {
+  background-image: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgb(0 0 0 / 0.6) 37.5%,
+    rgb(0 0 0 / 0.6) 68.75%,
+    transparent 100%
+  );
+}
+
+.omawe-footer-section {
+  background-image: linear-gradient(-4deg, #000 41.66%, #006b7c 171.93%);
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -10,7 +10,8 @@ import { WeThoughtSection } from "@/components/sections/we-thought-section";
 
 export default function Home() {
   return (
-    <div className="flex-1 bg-home-background text-device-ink">
+    <div className="relative isolate flex-1 text-device-ink">
+      <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 bg-home-background" />
       <SiteHeader />
       <main>
         <GetOmaweSection />
