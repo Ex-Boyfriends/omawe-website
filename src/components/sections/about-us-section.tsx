@@ -1,5 +1,10 @@
 import Image from "next/image";
 
+const socialIconSize = {
+  bw: 36,
+  color: 36,
+};
+
 const team = [
   {
     name: "Kahfi",
@@ -59,10 +64,27 @@ function TeamCard({
       <div className="team-card-copy">
         <h3 className="team-card-name">{name}</h3>
         <p className="team-card-role">{role}</p>
-        <p className="team-card-country">
-          <span aria-hidden>{flag}</span>
-          {country}
-        </p>
+      </div>
+      <p className="team-card-country">
+        <span aria-hidden>{flag}</span>
+        {country}
+      </p>
+      <div className="team-card-connect">
+        <p>Connect with me</p>
+        <div className="team-card-socials" aria-label={`${name}'s social links`}>
+          <a className="team-card-social" href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="Open Instagram">
+            <Image className="team-card-social-base" src="/figma/insta-bw.svg" alt="" width={socialIconSize.bw} height={socialIconSize.bw} />
+            <Image className="team-card-social-hover" src="/figma/insta.svg" alt="" width={socialIconSize.color} height={socialIconSize.color} />
+          </a>
+          <a className="team-card-social" href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="Open Instagram">
+            <Image className="team-card-social-base" src="/figma/linkedin-bw.svg" alt="" width={socialIconSize.bw} height={socialIconSize.bw} />
+            <Image className="team-card-social-hover" src="/figma/linkedin.svg" alt="" width={socialIconSize.color} height={socialIconSize.color} />
+          </a>
+          <a className="team-card-social" href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="Open Instagram">
+            <Image className="team-card-social-base" src="/figma/website-bw.svg" alt="" width={socialIconSize.bw} height={socialIconSize.bw} />
+            <Image className="team-card-social-hover" src="/figma/website.svg" alt="" width={socialIconSize.color} height={socialIconSize.color} />
+          </a>
+        </div>
       </div>
     </article>
   );

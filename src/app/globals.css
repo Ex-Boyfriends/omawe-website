@@ -262,10 +262,36 @@
 }
 
 .team-card {
+  --team-card-hover-duration: 650ms;
+  --team-card-link-duration: 450ms;
   aspect-ratio: 0.76;
   container-type: inline-size;
   overflow: hidden;
   position: relative;
+}
+
+.team-card::before,
+.team-card::after {
+  content: "";
+  height: 19%;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  transition: opacity var(--team-card-hover-duration) ease;
+  z-index: 1;
+}
+
+.team-card::before {
+  background: linear-gradient(180deg, rgb(0 0 0 / 0.35), transparent);
+  top: 0;
+}
+
+.team-card::after {
+  background: linear-gradient(0deg, rgb(0 0 0 / 0.78), transparent);
+  bottom: 0;
+  height: 30%;
+  opacity: 0;
 }
 
 .team-card-art {
@@ -280,26 +306,32 @@
   right: 8%;
   top: 8%;
   position: absolute;
-  z-index: 1;
+  z-index: 2;
 }
 
 .team-card-name {
   color: #fff;
   font-family: "SF Pro Expanded", "SF Pro Display", -apple-system, sans-serif;
-  font-size: clamp(2rem, 18cqi, 3.8rem);
+  font-size: clamp(1.5rem, 13cqi, 2.8rem);
   font-stretch: expanded;
   font-weight: 600;
   letter-spacing: -0.08em;
   line-height: 0.9;
+  transform-origin: left top;
+  transition: transform var(--team-card-hover-duration) cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .team-card-role {
   color: rgb(218 233 255 / 0.64);
-  font-size: clamp(0.9rem, 8cqi, 1.6rem);
+  font-family: "SF Pro Expanded", "SF Pro Display", -apple-system, sans-serif;
+  font-size: clamp(0.75rem, 5cqi, 1rem);
+  font-stretch: expanded;
   font-weight: 600;
   letter-spacing: -0.04em;
   line-height: 1.1;
-  margin-top: 0.2em;
+  margin-top: 10px;
+  transform-origin: left top;
+  transition: transform var(--team-card-hover-duration) cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .team-card-country {
@@ -309,12 +341,97 @@
   border-radius: 999px;
   color: #fff;
   display: flex;
-  font-size: clamp(0.75rem, 6.5cqi, 1.25rem);
+  font-size: clamp(0.6875rem, 5cqi, 1rem);
   font-weight: 600;
   gap: 0.45em;
-  margin-top: 1.25em;
-  padding: 0.54em 0.85em;
+  left: 10%;
+  margin: 0;
+  padding: 4px 6px;
+  position: absolute;
+  top: 20%;
+  transform: translateY(calc(93.42cqi - 16px));
+  transition: transform var(--team-card-hover-duration) cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 1;
   backdrop-filter: blur(12px);
+}
+
+.team-card-connect {
+  bottom: 7%;
+  color: #fff;
+  left: 9%;
+  opacity: 0;
+  position: absolute;
+  transform: translateY(115%);
+  transition: opacity var(--team-card-hover-duration) ease, transform var(--team-card-hover-duration) cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 2;
+}
+
+.team-card-connect > p {
+  font-family: "SF Pro Expanded", "SF Pro Display", -apple-system, sans-serif;
+  font-size: clamp(1rem, 8cqi, 1.75rem);
+  font-stretch: expanded;
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  line-height: 1;
+}
+
+.team-card-socials {
+  display: flex;
+  gap: 9px;
+  margin-top: 10px;
+}
+
+.team-card-social {
+  display: grid;
+  height: clamp(2.35rem, 18cqi, 4.5rem);
+  place-items: center;
+  position: relative;
+  width: clamp(2.35rem, 18cqi, 4.5rem);
+}
+
+.team-card-social img {
+  left: 50%;
+  max-width: none;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity var(--team-card-link-duration) ease, filter var(--team-card-link-duration) ease;
+}
+
+.team-card-social-hover {
+  opacity: 0;
+}
+
+@media (hover: hover) {
+  .team-card:hover::after {
+    opacity: 1;
+  }
+
+  .team-card:hover .team-card-name,
+  .team-card:hover .team-card-role {
+    transform: scale(1.15);
+  }
+
+  .team-card:hover .team-card-country {
+    transform: translateY(85%);
+    z-index: 2;
+  }
+
+  .team-card:hover .team-card-connect {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .team-card-social:hover .team-card-social-base,
+  .team-card-social:focus-visible .team-card-social-base {
+    opacity: 0;
+  }
+
+  .team-card-social:hover .team-card-social-hover,
+  .team-card-social:focus-visible .team-card-social-hover {
+    filter: drop-shadow(0 0 19.81px rgb(25 125 255 / 0.54));
+    opacity: 1;
+  }
 }
 
 html {
