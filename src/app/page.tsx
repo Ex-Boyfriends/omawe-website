@@ -10,7 +10,7 @@ import { WeThoughtSection } from "@/components/sections/we-thought-section";
 
 export default function Home() {
   return (
-    <div className="relative isolate flex-1 text-device-ink">
+    <div id="top" className="relative isolate flex-1 text-device-ink">
       <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 bg-home-background" />
       <SiteHeader />
       <main>

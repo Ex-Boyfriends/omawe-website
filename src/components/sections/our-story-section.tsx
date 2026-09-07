@@ -8,7 +8,7 @@ export function OurStorySection() {
     >
       <div className="mx-auto max-w-[1200px]">
         <div className="mx-auto max-w-[774px] text-center">
-          <p className="mb-3 text-sm font-medium tracking-[0.375em] text-white/50">
+          <p className="type-button mb-3 tracking-[0.375em] text-white/50">
             OUR STORY
           </p>
           <h2 className="type-large-title text-white">Start from interest</h2>
@@ -20,6 +20,8 @@ export function OurStorySection() {
             alt="The Ex-boyfriends team together at the Apple Developer Academy Bali"
             width={552}
             height={345}
+            loading="eager"
+            quality={100}
             sizes="(max-width: 1023px) 100vw, 56.5vw"
             className="h-auto w-full"
           />

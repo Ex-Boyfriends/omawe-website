@@ -4,7 +4,7 @@ export function GetOmaweSection() {
   return (
     <section
       id="get-omawe"
-      className="relative isolate flex min-h-[100svh] flex-col items-center overflow-hidden px-4 pt-32 pb-16 sm:pt-40"
+      className="relative isolate flex min-h-[100svh] flex-col items-center overflow-hidden px-4 pt-24 pb-16 sm:pt-28"
     >
       <h1 className="text-gradient-brand type-large-title max-w-[31ch] text-center tracking-[-0.04em]">
   Group travel, just vibes. <br />

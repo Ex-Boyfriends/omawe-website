@@ -17,27 +17,57 @@ export function FooterSection() {
         </Link>
 
         <div className="flex flex-col items-start gap-5 lg:items-center">
-          <div className="flex gap-3" aria-hidden>
-            <Image
-              src="/figma/linkedin.svg"
-              alt=""
-              width={36}
-              height={36}
-              className="size-9"
-            />
-            <Image
-              src="/figma/instagram.svg"
-              alt=""
-              width={36}
-              height={36}
-              className="size-9"
-            />
+          <div className="flex gap-3">
+            <a
+              href="https://www.linkedin.com/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Visit Omawe on LinkedIn"
+              className="contact-social"
+            >
+              <Image
+                src="/figma/linkedin-bw.svg"
+                alt=""
+                width={36}
+                height={36}
+                className="contact-social-base"
+              />
+              <Image
+                src="/figma/linkedin.svg"
+                alt=""
+                width={36}
+                height={36}
+                className="contact-social-hover"
+              />
+            </a>
+            <a
+              href="https://www.instagram.com/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Visit Omawe on Instagram"
+              className="contact-social"
+            >
+              <Image
+                src="/figma/insta-bw.svg"
+                alt=""
+                width={36}
+                height={36}
+                className="contact-social-base"
+              />
+              <Image
+                src="/figma/insta.svg"
+                alt=""
+                width={36}
+                height={36}
+                className="contact-social-hover"
+              />
+            </a>
           </div>
           <Link
-            href="#get-omawe"
+            href="#top"
             className="type-button inline-flex h-[55px] items-center gap-2 rounded-full border border-[#03b9d6] bg-white/10 px-6 text-white"
           >
-            <span aria-hidden>↥</span>
+            <Image src="/figma/arrowsquare.svg" alt="" width={14} height={14} />
             Back to top
           </Link>
         </div>
