@@ -1,4 +1,6 @@
+import Link from "next/link";
 import { TripRoute } from "@/components/trip-route";
+import { OMAWE_DOWNLOAD_URL } from "@/lib/links";
 
 export function GetOmaweSection() {
   return (
@@ -17,12 +19,12 @@ export function GetOmaweSection() {
         Every great trip starts with hype, not homework. <strong>Omawe brings your <br /> squad&rsquo;s journey straight to your Lock Screen</strong> so you can put the phone <br /> down and actually enjoy the ride.
       </p>
 
-      <span className="omawe-button bg-button-background type-button mt-9 hidden rounded-xl px-4 py-4 text-white sm:inline-flex">
+      <Link href={OMAWE_DOWNLOAD_URL} className="omawe-button bg-button-background type-button mt-9 hidden rounded-xl px-4 py-4 text-white sm:inline-flex">
         <span className="inline-flex items-center gap-1.5">
           <span aria-hidden className="text-xl leading-none"></span>
           Get Omawe
         </span>
-      </span>
+      </Link>
     </section>
   );
 }

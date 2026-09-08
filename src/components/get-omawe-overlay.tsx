@@ -1,12 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-
-const TESTFLIGHT_URL = "https://testflight.apple.com/join/9b4DaTtE";
+import { OMAWE_DOWNLOAD_URL } from "@/lib/links";
 
 export function GetOmaweOverlay() {
   return (
     <Link
-      href={TESTFLIGHT_URL}
+      href={OMAWE_DOWNLOAD_URL}
       aria-label="Get Omawe on TestFlight"
       className="fixed inset-x-4 bottom-4 z-40 flex h-[102px] max-h-[370px] overflow-hidden rounded-[28px] border border-transparent p-4 sm:hidden"
       style={{

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { OMAWE_DOWNLOAD_URL } from "@/lib/links";
 
 const navigation = [
   { href: "#our-story", label: "Our story" },
@@ -42,7 +43,7 @@ export function SiteHeader() {
       </header>
 
       <Link
-        href="#get-omawe"
+        href={OMAWE_DOWNLOAD_URL}
         className="omawe-button hidden h-12 shrink-0 items-center justify-center rounded-2xl px-4 text-[11px] font-semibold text-white sm:inline-flex sm:h-16 sm:w-[245px] sm:rounded-[24px] sm:px-6 sm:text-lg"
       >
         <span>Download now</span>

@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-
-const TESTFLIGHT_URL = "https://testflight.apple.com/join/9b4DaTtE";
+import { OMAWE_DOWNLOAD_URL } from "@/lib/links";
 
 export function WeThoughtSection() {
   return (
@@ -58,7 +57,7 @@ export function WeThoughtSection() {
                 the people, not the planning.
               </p>
               <Link
-                href={TESTFLIGHT_URL}
+                href={OMAWE_DOWNLOAD_URL}
                 className="omawe-button type-button mt-6 hidden h-14 items-center rounded-2xl px-4 text-white sm:inline-flex"
               >
                 <span>Download now</span>
