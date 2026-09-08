@@ -15,31 +15,32 @@ export function OverviewSection() {
     <>
       <section
         id="overview"
-        className="relative isolate flex min-h-[380px] items-center justify-center overflow-hidden px-4 py-24 sm:min-h-[444px]"
+        className="relative isolate flex min-h-[417px] items-center justify-center overflow-hidden px-4 py-24 sm:min-h-[444px]"
       >
         <Image
           src="/figma/overview-background1.png"
           alt=""
           fill
           sizes="100vw"
-          className="-z-20 object-cover"
+          className="-z-20 scale-[2.5] object-contain brightness-[0.4] sm:scale-100 sm:object-cover sm:brightness-100"
         />
-        <div className="absolute inset-0 -z-10 bg-black/77" aria-hidden />
+        <div className="absolute inset-0 -z-10 hidden bg-black/60 sm:block sm:bg-black/77" aria-hidden />
 
         <div className="text-center text-white">
           <p className="mb-3 text-sm font-medium tracking-[0.375em] text-white/50">
             OVERVIEW
           </p>
-          <h2 className="type-large-title">Omawe</h2>
+          <h2 className="type-title-1 text-gradient-brand sm:hidden">Omawe</h2>
+          <h2 className="type-large-title hidden sm:block">Omawe</h2>
           <button
             type="button"
             onClick={() => {
               setIsVideoClosing(false);
               setIsVideoOpen(true);
             }}
-            className="type-button mt-6 inline-flex h-[55px] cursor-pointer items-center gap-2 rounded-full border border-[#03b9d6] bg-white/10 px-6 text-white"
+            className="type-headline mt-6 inline-flex h-[55px] w-[min(100%,272px)] cursor-pointer items-center justify-center gap-2 rounded-full border border-[#03b9d6] bg-white/10 px-5 text-white sm:type-button sm:w-auto sm:px-6"
           >
-            <span aria-hidden className="text-xs">▷</span>
+            <span aria-hidden className="text-base leading-none">▷</span>
             Click to see the video
           </button>
         </div>

@@ -2,6 +2,7 @@ import { AboutUsSection } from "@/components/sections/about-us-section";
 import { ContactUsSection } from "@/components/sections/contact-us-section";
 import { FooterSection } from "@/components/sections/footer-section";
 import { GetOmaweSection } from "@/components/sections/get-omawe-section";
+import { GetOmaweOverlay } from "@/components/get-omawe-overlay";
 import { OurStorySection } from "@/components/sections/our-story-section";
 import { OverviewSection } from "@/components/sections/overview-section";
 import { ProblemSection } from "@/components/sections/problem-section";
@@ -25,6 +26,7 @@ export default function Home() {
         <ContactUsSection />
       </main>
       <FooterSection />
+      <GetOmaweOverlay />
     </div>
   );
 }

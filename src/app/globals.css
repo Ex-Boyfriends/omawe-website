@@ -272,6 +272,18 @@
   font-stretch: expanded;
 }
 
+@media (max-width: 639px) {
+  .site-header-shell {
+    background: rgb(0 0 0 / 0.18);
+    backdrop-filter: blur(24px) saturate(120%);
+    -webkit-backdrop-filter: blur(24px) saturate(120%);
+  }
+
+  .site-header {
+    background: transparent;
+  }
+}
+
 .omawe-card-border {
   isolation: isolate;
   position: relative;
@@ -785,6 +797,42 @@ body {
 
 .omawe-modal--closing > * {
   animation: omawe-modal-content-out 440ms ease-in both;
+}
+
+@keyframes omawe-overlay-phone-in {
+  0%,
+  12% {
+    opacity: 0;
+    transform: translateY(18px) scale(0.92);
+  }
+
+  26%,
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes omawe-overlay-phone-two-in {
+  0%,
+  29% {
+    opacity: 0;
+    transform: translateY(18px) scale(0.92);
+  }
+
+  43%,
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.omawe-overlay-phone-one {
+  animation: omawe-overlay-phone-two-in 5.6s cubic-bezier(0.22, 1, 0.36, 1) infinite both;
+}
+
+.omawe-overlay-phone-two {
+  animation: omawe-overlay-phone-in 5.6s cubic-bezier(0.22, 1, 0.36, 1) infinite both;
 }
 
 @media (prefers-reduced-motion: no-preference) {

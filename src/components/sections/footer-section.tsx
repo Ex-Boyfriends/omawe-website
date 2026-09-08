@@ -4,9 +4,9 @@ import Link from "next/link";
 
 export function FooterSection() {
   return (
-    <footer className="omawe-footer-section relative overflow-hidden pt-16 text-white sm:pt-24 lg:pt-[100px]">
-      <div className="mx-auto flex max-w-[1440px] flex-col gap-10 px-4 sm:px-8 lg:flex-row lg:items-center lg:justify-between lg:px-[120px]">
-        <Link href="#get-omawe" className="flex items-center gap-5">
+    <footer className="omawe-footer-section relative overflow-hidden pt-24 text-white sm:pt-24 lg:pt-[100px]">
+      <div className="mx-auto flex max-w-[1440px] flex-col items-center gap-10 px-4 sm:px-8 lg:flex-row lg:items-center lg:justify-between lg:px-[120px]">
+        <Link href="#get-omawe" className="flex flex-col items-center gap-4 sm:flex-row sm:gap-5">
           <Image
             src="/omawe-icon.webp"
             alt=""
@@ -17,7 +17,7 @@ export function FooterSection() {
           <span className="text-2xl font-semibold tracking-tight">Omawe</span>
         </Link>
 
-        <div className="flex flex-col items-start gap-5 lg:items-center">
+        <div className="flex w-full items-center justify-between gap-5 sm:w-auto sm:flex-col sm:items-center">
           <div className="flex gap-3">
             <a
               href="https://www.linkedin.com/"
@@ -69,7 +69,7 @@ export function FooterSection() {
       </div>
 
       <div className="mt-12 border-t border-white/30">
-        <div className="mx-auto flex max-w-[1440px] flex-col gap-3 px-4 py-5 text-center text-sm text-white/90 sm:px-8 lg:flex-row lg:items-center lg:justify-between lg:px-[120px] lg:text-left">
+        <div className="type-body mx-auto flex max-w-[1440px] flex-col gap-3 px-4 py-5 text-center text-white/90 sm:px-8 sm:text-sm lg:flex-row lg:items-center lg:justify-between lg:px-[120px] lg:text-left">
           <Link href="/privacy-policy" className="transition-opacity hover:opacity-70">
             Privacy
           </Link>

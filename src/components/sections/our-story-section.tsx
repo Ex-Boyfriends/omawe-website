@@ -4,7 +4,7 @@ export function OurStorySection() {
   return (
     <section
       id="our-story"
-      className="relative overflow-hidden px-4 py-16 sm:px-8 sm:py-24 lg:px-[120px] lg:py-[100px]"
+      className="relative hidden overflow-hidden px-4 py-16 sm:block sm:px-8 sm:py-24 lg:px-[120px] lg:py-[100px]"
     >
       <div className="mx-auto max-w-[1200px]">
         <div className="mx-auto max-w-[774px] text-center">

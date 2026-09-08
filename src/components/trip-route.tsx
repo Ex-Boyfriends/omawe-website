@@ -57,7 +57,7 @@ export function TripRoute() {
     <div
       role="img"
       aria-label="Five travellers on their way to a shared destination"
-      className="relative mt-9 h-52 w-[calc(100%+2rem)] sm:mt-12 sm:h-64"
+      className="relative mt-9 h-52 w-[180%] sm:mt-12 sm:h-64 sm:w-[calc(100%+2rem)]"
     >
       <svg
         aria-hidden
@@ -101,7 +101,7 @@ export function TripRoute() {
       {TRAVELLERS.map(({ distance, src, x, y }, index) => (
         <div
           key={src}
-          className="absolute -translate-x-1/2 -translate-y-1/2"
+          className={`absolute -translate-x-1/2 -translate-y-1/2 ${index === 0 || index === TRAVELLERS.length - 1 ? "hidden sm:block" : ""}`}
           style={{
             left: `${(x / ROUTE_WIDTH) * 100}%`,
             top: `${(y / ROUTE_HEIGHT) * 100}%`,
@@ -109,7 +109,7 @@ export function TripRoute() {
         >
           {(reduceMotion || index < visibleCount) && (
             <div key={`${src}-${cycle}`} className="trip-route-traveller relative">
-              <span className="type-title-3 absolute top-0 left-1/2 z-10 -translate-x-1/2 -translate-y-[60%] whitespace-nowrap rounded-full border border-white/25 bg-[linear-gradient(135deg,rgb(255_255_255_/_0.2),rgb(255_255_255_/_0.06))] px-3 py-2 tracking-[-0.04em] text-white shadow-[inset_0_1px_rgb(255_255_255_/_0.25),0_4px_14px_rgb(0_0_0_/_0.28)] backdrop-blur-xl">
+              <span className="type-headline absolute top-0 left-1/2 z-10 -translate-x-1/2 -translate-y-[60%] whitespace-nowrap rounded-full border border-white/25 bg-[linear-gradient(135deg,rgb(255_255_255_/_0.2),rgb(255_255_255_/_0.06))] px-3 py-2 tracking-[-0.04em] text-white shadow-[inset_0_1px_rgb(255_255_255_/_0.25),0_4px_14px_rgb(0_0_0_/_0.28)] backdrop-blur-xl sm:type-title-3">
                 {distance}
               </span>
               <Image

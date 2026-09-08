@@ -4,12 +4,12 @@ export function GetOmaweSection() {
   return (
     <section
       id="get-omawe"
-      className="relative isolate flex min-h-[100svh] flex-col items-center overflow-hidden px-4 pt-24 pb-16 sm:pt-28"
+      className="relative isolate flex min-h-[100svh] flex-col items-center overflow-hidden px-4 pt-40 pb-16 sm:pt-28"
     >
-      <h1 className="text-gradient-brand type-large-title max-w-[31ch] text-center tracking-[-0.04em]">
-  Group travel, just vibes. <br />
-  No more &quot;Where are you?&quot; texts.
-</h1>
+      <h1 className="text-gradient-brand type-title-1 max-w-[31ch] text-center tracking-[-0.04em] sm:type-large-title">
+        Group travel, just vibes. <br />
+        No more &quot;Where are you?&quot; texts.
+      </h1>
 
       <TripRoute />
 
@@ -17,7 +17,7 @@ export function GetOmaweSection() {
         Every great trip starts with hype, not homework. <strong>Omawe brings your <br /> squad&rsquo;s journey straight to your Lock Screen</strong> so you can put the phone <br /> down and actually enjoy the ride.
       </p>
 
-      <span className="omawe-button bg-button-background type-button mt-9 inline-flex rounded-xl px-4 py-4 text-white">
+      <span className="omawe-button bg-button-background type-button mt-9 hidden rounded-xl px-4 py-4 text-white sm:inline-flex">
         <span className="inline-flex items-center gap-1.5">
           <span aria-hidden className="text-xl leading-none"></span>
           Get Omawe
