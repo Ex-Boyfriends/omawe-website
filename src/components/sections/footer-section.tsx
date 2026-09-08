@@ -1,3 +1,4 @@
+import { BackToTopButton } from "@/components/back-to-top-button";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -63,13 +64,7 @@ export function FooterSection() {
               />
             </a>
           </div>
-          <Link
-            href="#top"
-            className="type-button inline-flex h-[55px] items-center gap-2 rounded-full border border-[#03b9d6] bg-white/10 px-6 text-white"
-          >
-            <Image src="/figma/arrowsquare.svg" alt="" width={14} height={14} />
-            Back to top
-          </Link>
+          <BackToTopButton />
         </div>
       </div>
 

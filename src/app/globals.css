@@ -583,7 +583,7 @@ body {
 }
 
 .problem-scene-item {
-  animation-duration: 7.5s;
+  animation-duration: 5.5s;
   animation-fill-mode: both;
   animation-iteration-count: infinite;
   display: block;
@@ -610,13 +610,13 @@ body {
 
 @keyframes problem-scene-phone {
   0%,
-  3% {
+  4% {
     opacity: 0;
     transform: translateY(18px) scale(0.88);
   }
 
-  8%,
-  96% {
+  11%,
+  95% {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
@@ -629,13 +629,13 @@ body {
 
 @keyframes problem-scene-one {
   0%,
-  10% {
+  14% {
     opacity: 0;
     transform: translateY(18px) scale(0.88);
   }
 
-  15%,
-  96% {
+  20%,
+  95% {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
@@ -648,13 +648,13 @@ body {
 
 @keyframes problem-scene-two {
   0%,
-  17% {
+  23% {
     opacity: 0;
     transform: translateY(18px) scale(0.88);
   }
 
-  22%,
-  96% {
+  30%,
+  95% {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
@@ -667,13 +667,13 @@ body {
 
 @keyframes problem-scene-three {
   0%,
-  24% {
+  33% {
     opacity: 0;
     transform: translateY(18px) scale(0.88);
   }
 
-  30%,
-  96% {
+  41%,
+  95% {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
@@ -690,6 +690,118 @@ body {
     rgb(0 0 0 / 0.7) 41.66%,
     #006b7c 171.93%
   );
+}
+
+.we-thought-card {
+  transform-origin: center;
+  transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (hover: hover) {
+  .we-thought-card:hover {
+    transform: scale(1.02);
+    z-index: 10;
+  }
+}
+
+.privacy-policy-page {
+  color: rgb(255 255 255 / 0.84);
+}
+
+.privacy-policy-page .text-ink,
+.privacy-policy-page h2,
+.privacy-policy-page strong {
+  color: #fff !important;
+}
+
+.privacy-policy-page .placard,
+.privacy-policy-page .text-ink-dim {
+  color: rgb(255 255 255 / 0.72) !important;
+}
+
+.privacy-policy-page .border-rule {
+  border-color: rgb(255 255 255 / 0.25) !important;
+}
+
+.privacy-policy-page .decoration-rule-strong {
+  text-decoration-color: rgb(255 255 255 / 0.5) !important;
+}
+
+@keyframes omawe-modal-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes omawe-modal-content-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes omawe-modal-fade-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes omawe-modal-content-out {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(16px) scale(0.97);
+  }
+}
+
+.omawe-modal {
+  animation: omawe-modal-fade-in 460ms ease-out both;
+}
+
+.omawe-modal > * {
+  animation: omawe-modal-content-in 640ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.omawe-modal--closing {
+  animation: omawe-modal-fade-out 500ms ease-in both;
+}
+
+.omawe-modal--closing > * {
+  animation: omawe-modal-content-out 440ms ease-in both;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .scroll-effects-ready main > section:not(#get-omawe):not(#overview) {
+    opacity: 0;
+    transform: translateY(48px) scale(0.94);
+    transition:
+      opacity 1.1s ease-out,
+      transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+
+  .scroll-effects-ready
+    main > section:not(#get-omawe):not(#overview).is-scroll-revealed {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

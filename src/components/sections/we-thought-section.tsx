@@ -20,7 +20,7 @@ export function WeThoughtSection() {
         </div>
 
         <div className="mt-12 grid gap-6 lg:grid-cols-[305px_625px] lg:items-stretch">
-          <article className="omawe-card-border rounded-[40px] border-[1.5px] border-black bg-black/30 p-8 shadow-[0_4px_13px_rgb(0_0_0_/_0.25)] lg:rounded-[48px]">
+          <article className="we-thought-card omawe-card-border rounded-[40px] border-[1.5px] border-black bg-black/30 p-8 shadow-[0_4px_13px_rgb(0_0_0_/_0.25)] lg:rounded-[48px]">
             <Image
               src="/WeThought1.png"
               alt=""
@@ -37,7 +37,7 @@ export function WeThoughtSection() {
             </p>
           </article>
 
-          <article className="omawe-card-border relative overflow-visible rounded-[40px] border-[1.5px] border-black bg-[linear-gradient(118deg,#000_14%,#006b7c_94%)] p-8 shadow-[0_4px_7px_rgb(0_0_0_/_0.25)] lg:min-h-[381px] lg:rounded-[48px] lg:pr-[280px]">
+          <article className="we-thought-card omawe-card-border relative overflow-visible rounded-[40px] border-[1.5px] border-black bg-[linear-gradient(118deg,#000_14%,#006b7c_94%)] p-8 shadow-[0_4px_7px_rgb(0_0_0_/_0.25)] lg:min-h-[381px] lg:rounded-[48px] lg:pr-[280px]">
             <Image
               src="/WeThought2.png"
               alt=""

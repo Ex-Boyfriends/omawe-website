@@ -13,7 +13,8 @@ const LAST_UPDATED = "August 31, 2026";
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="flex-1 bg-map-grid">
+    <div className="privacy-policy-page relative isolate flex-1">
+    <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 bg-home-background" />
     <main className="mx-auto max-w-3xl px-6 py-16">
       <Wordmark href="/" />
 

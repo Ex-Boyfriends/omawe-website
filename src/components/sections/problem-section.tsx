@@ -5,6 +5,11 @@ import { useState } from "react";
 
 export function ProblemSection() {
   const [isSolutionOpen, setIsSolutionOpen] = useState(false);
+  const [isSolutionClosing, setIsSolutionClosing] = useState(false);
+
+  function closeSolution() {
+    setIsSolutionClosing(true);
+  }
 
   return (
     <>
@@ -73,7 +78,10 @@ export function ProblemSection() {
             </p>
             <button
               type="button"
-              onClick={() => setIsSolutionOpen(true)}
+              onClick={() => {
+                setIsSolutionClosing(false);
+                setIsSolutionOpen(true);
+              }}
               className="omawe-button type-button mt-6 inline-flex h-14 items-center rounded-2xl px-4 text-white"
             >
               <span>Our solution</span>
@@ -87,9 +95,16 @@ export function ProblemSection() {
           role="dialog"
           aria-modal="true"
           aria-label="Omawe solution preview"
-          className="fixed inset-0 z-50 flex flex-col items-center justify-center gap-6 overflow-y-auto bg-black/[0.9] px-4 py-8"
+          data-lenis-prevent
+          className={`omawe-modal${isSolutionClosing ? " omawe-modal--closing" : ""} fixed inset-0 z-50 flex flex-col items-center justify-center gap-6 overflow-y-auto bg-black/[0.9] px-4 py-8`}
           onClick={(event) => {
-            if (event.target === event.currentTarget) setIsSolutionOpen(false);
+            if (event.target === event.currentTarget) closeSolution();
+          }}
+          onAnimationEnd={(event) => {
+            if (isSolutionClosing && event.target === event.currentTarget) {
+              setIsSolutionOpen(false);
+              setIsSolutionClosing(false);
+            }
           }}
         >
           <Image
@@ -103,7 +118,7 @@ export function ProblemSection() {
           />
           <button
             type="button"
-            onClick={() => setIsSolutionOpen(false)}
+            onClick={closeSolution}
             className="shrink-0 rounded-full transition-transform hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-300"
             aria-label="Close solution preview"
           >

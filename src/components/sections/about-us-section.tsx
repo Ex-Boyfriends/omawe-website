@@ -12,6 +12,9 @@ const team = [
     country: "Indonesia",
     flag: "🇮🇩",
     src: "/figma/card-kahfi.png",
+    instagramUrl: "https://www.instagram.com/nrkahfirhmd/",
+    linkedinUrl: "https://www.linkedin.com/in/nrkahfirhmd/",
+    websiteUrl: "",
   },
   {
     name: "Gleen",
@@ -19,6 +22,9 @@ const team = [
     country: "Indonesia",
     flag: "🇮🇩",
     src: "/figma/card-gleen.png",
+    instagramUrl: "https://www.instagram.com/gleenryan2005/",
+    linkedinUrl: "https://www.linkedin.com/in/gleen-ryan/",
+    websiteUrl: "https://gleenryan.vercel.app",
   },
   {
     name: "Bintang",
@@ -26,6 +32,9 @@ const team = [
     country: "Indonesia",
     flag: "🇮🇩",
     src: "/figma/card-bintang.png",
+    instagramUrl: "https://www.instagram.com/_alfathoshi",
+    linkedinUrl: "https://www.linkedin.com/in/alfathoshi",
+    websiteUrl: "https://alfathoshi.vercel.app/",
   },
   {
     name: "Luat",
@@ -33,6 +42,9 @@ const team = [
     country: "Vietnam",
     flag: "🇻🇳",
     src: "/figma/card-luat.png",
+    instagramUrl: "https://www.instagram.com/nmluat_2603/",
+    linkedinUrl: "https://www.linkedin.com/in/luat-nguyen-639649219/",
+    websiteUrl: "https://luatnguyen26.framer.website/",
   },
   {
     name: "Syed",
@@ -40,6 +52,9 @@ const team = [
     country: "Australia",
     flag: "🇦🇺",
     src: "/figma/card-syed.png",
+    instagramUrl: "https://www.instagram.com/syed1srar/",
+    linkedinUrl: "https://www.linkedin.com/in/syed-israruddin/",
+    websiteUrl: "",
   },
 ];
 
@@ -49,6 +64,9 @@ function TeamCard({
   country,
   flag,
   src,
+  instagramUrl,
+  linkedinUrl,
+  websiteUrl,
 }: (typeof team)[number]) {
   return (
     <article className="team-card">
@@ -72,15 +90,15 @@ function TeamCard({
       <div className="team-card-connect">
         <p>Connect with me</p>
         <div className="team-card-socials" aria-label={`${name}'s social links`}>
-          <a className="team-card-social" href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="Open Instagram">
+          <a className="team-card-social" href={instagramUrl || undefined} target="_blank" rel="noopener noreferrer" aria-label={`Open ${name}'s Instagram`}>
             <Image className="team-card-social-base" src="/figma/insta-bw.svg" alt="" width={socialIconSize.bw} height={socialIconSize.bw} />
             <Image className="team-card-social-hover" src="/figma/insta.svg" alt="" width={socialIconSize.color} height={socialIconSize.color} />
           </a>
-          <a className="team-card-social" href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="Open Instagram">
+          <a className="team-card-social" href={linkedinUrl || undefined} target="_blank" rel="noopener noreferrer" aria-label={`Open ${name}'s LinkedIn`}>
             <Image className="team-card-social-base" src="/figma/linkedin-bw.svg" alt="" width={socialIconSize.bw} height={socialIconSize.bw} />
             <Image className="team-card-social-hover" src="/figma/linkedin.svg" alt="" width={socialIconSize.color} height={socialIconSize.color} />
           </a>
-          <a className="team-card-social" href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="Open Instagram">
+          <a className="team-card-social" href={websiteUrl || undefined} target="_blank" rel="noopener noreferrer" aria-label={`Open ${name}'s website`}>
             <Image className="team-card-social-base" src="/figma/website-bw.svg" alt="" width={socialIconSize.bw} height={socialIconSize.bw} />
             <Image className="team-card-social-hover" src="/figma/website.svg" alt="" width={socialIconSize.color} height={socialIconSize.color} />
           </a>
