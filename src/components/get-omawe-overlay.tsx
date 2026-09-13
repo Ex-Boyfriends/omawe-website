@@ -1,13 +1,30 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { OMAWE_DOWNLOAD_URL } from "@/lib/links";
 
 export function GetOmaweOverlay() {
+  const [isFooterVisible, setIsFooterVisible] = useState(false);
+
+  useEffect(() => {
+    const footer = document.querySelector("footer");
+    if (!footer) return;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      setIsFooterVisible(entry.isIntersecting);
+    });
+
+    observer.observe(footer);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <Link
       href={OMAWE_DOWNLOAD_URL}
       aria-label="Get Omawe on TestFlight"
-      className="fixed inset-x-4 bottom-4 z-40 flex h-[102px] max-h-[370px] overflow-hidden rounded-[28px] border border-transparent p-4 sm:hidden"
+      className={`fixed inset-x-4 bottom-4 z-40 flex h-[102px] max-h-[370px] overflow-hidden rounded-[28px] border border-transparent p-4 transition-all duration-300 sm:hidden ${isFooterVisible ? "pointer-events-none translate-y-4 opacity-0" : "translate-y-0 opacity-100"}`}
       style={{
         backgroundImage:
           "var(--rb-button-dot), linear-gradient(90deg, #000000 0%, #006b7c 100%), linear-gradient(90deg, #03b9d6 0%, #7ae8ff 50%, #03b9d6 100%)",
